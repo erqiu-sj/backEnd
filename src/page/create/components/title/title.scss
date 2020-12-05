@@ -1,0 +1,30 @@
+.title {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 5px;
+  .inp {
+    height: 100%;
+    flex: 1;
+    border: none;
+    outline: none;
+    background: white;
+    padding-left: 10px;
+    color: rgba(117, 117, 117, 1);
+  }
+  span {
+    height: 100%;
+    line-height: 40px;
+    color: rgba(117, 117, 117, 1);
+    margin-right: 10px;
+  }
+}
+@media (max-width: 600px) {
+  .title {
+    span {
+      display: none;
+    }
+  }
+} ;

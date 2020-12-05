@@ -1,0 +1,18 @@
+{
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "**/.eslintcache": true,
+    "**/package-lock.json": true,
+    "**/yarn.lock": true,
+    "**/tsconfig.json": false,
+    "**/.gitignore": true,
+    "**/src/react-app-env.d.ts": true,
+    "**/src/setupTests.ts": true,
+    "**/src/reportWebVitals.ts": true
+  }
+}
