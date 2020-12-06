@@ -1,11 +1,11 @@
 import React, { FC, useState } from "react";
-import { Button, message } from "antd";
+import { Button, message, Input } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { GetAdminToken } from "../../action/admin/adminAction";
 import * as ErrorMessage from "../../message/error";
 import { VerifySuperAdministrator } from "../../utils/VerifySuperAdministrator";
 import { Empty, ErrorHandling } from "../../utils/fn";
-import { Create } from "../../http/create/create";
+import { Create, SendArticle } from "../../http/create/create";
 import Title from "./components/title/Title";
 import Editor from "../../components/Editor/Editor";
 import GroupSelect from "./components/groupSelect/groupSelect";
@@ -13,6 +13,8 @@ type Props = {};
 const CreatePage: FC<Props> = () => {
   // title内容
   const [val, setVal] = useState<string>("");
+  // 文章简介
+  const [briefIntroduction, setBriefIntroduction] = useState<string>("");
   // 文章内容
   const [content, setContent] = useState<string>("");
   // 文章类型
@@ -26,28 +28,43 @@ const CreatePage: FC<Props> = () => {
     ErrorHandling(
       () => {
         if (
-          Empty(val, "标题为空") &&
-          Empty(content, "内容为空") &&
-          Empty(articleType, "文章类型为空")
+          Empty(val, ErrorMessage.ARTICLETITLE_EMPTY) &&
+          Empty(briefIntroduction, ErrorMessage.INTRODUCATIONTOTHEARTICLE) &&
+          Empty(content, ErrorMessage.ARTICLECONTENT_EMPTY) &&
+          Empty(articleType, ErrorMessage.ARTICLETYPE_EMPTY)
         )
-          Login(val, content, articleType);
+          Login(val, content, articleType, briefIntroduction);
       },
       (e) => message.warning(e.message)
     );
   }
-  // admin 登陆
-  async function Login(val: string, content: string, articleType: string) {
+  // admin 登录
+  async function Login(
+    val: string,
+    content: string,
+    articleType: string,
+    briefIntroduction: string
+  ) {
     try {
-      // token为空跳到catch分支
+      // 验证token值是否为空 token为空跳到catch分支
       if (!token) throw new Error(ErrorMessage.TOKEN_EMPTRY);
-      // 验证token值是否为空
-      const result = await Create({
+      // 上传文章
+      const SendData: SendArticle = {
+        Title: val,
+        Content: content,
+        ArticleType: articleType,
+        BriefIntroduction: briefIntroduction,
+      };
+      const result = Create({
         url: "/write",
-        data: { val, content, articleType },
+        data: SendData,
+        headers: { "Authorization": token },
       });
-      console.log(result);
+      result
+        .then((res) => message.success(res.data.Result))
+        .catch(() => message.error(ErrorMessage.ARTICLE_UPLOADFAILED));
     } catch (e) {
-      // TODO: 此处报错无法捕获
+      // 保存token to redux
       VerifySuperAdministrator((ServerToken) => {
         tokenDispatch(GetAdminToken(ServerToken));
       });
@@ -56,6 +73,13 @@ const CreatePage: FC<Props> = () => {
   return (
     <div className="create">
       <Title onProxyChange={(val) => setVal(val)} />
+      <br />
+      <Input
+        style={{ borderRadius: "5px", outline: "none" }}
+        placeholder="简介"
+        onChange={(e) => setBriefIntroduction(e.target.value)}
+      />
+      <br />
       <br />
       <div style={{ background: "#fff", borderRadius: "5px" }}>
         <Editor onProxyChange={(val) => setContent(val)} />
