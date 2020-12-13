@@ -1,7 +1,7 @@
 /*
  * @Author: 邱狮杰
  * @Date: 2020-12-04 17:24:10
- * @LastEditTime: 2020-12-05 14:01:17
+ * @LastEditTime: 2020-12-13 15:43:06
  * @FilePath: /backEnd-main/src/store/reducer/classification/state.ts
  * @Description: 分类content
  */
@@ -10,7 +10,7 @@ export const ActicleFrontendTypeList = [
   "JavaScript",
   "TypeScript",
   "Css",
-  "Echart",
+  "Echart", 
 ];
 // 后端
 export const ActicleBackendTypeList = ["Golang", "Mysql", "Redis"];

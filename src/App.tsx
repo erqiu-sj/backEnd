@@ -1,7 +1,7 @@
 /*
  * @Author: 邱狮杰
  * @Date: 2020-12-04 14:47:31
- * @LastEditTime: 2020-12-05 13:45:40
+ * @LastEditTime: 2020-12-13 16:53:35
  * @FilePath: /backEnd-main/src/App.tsx
  * @Description: homePage
  */
@@ -13,12 +13,14 @@ import { Link } from "react-router-dom";
 // Page
 import CreatePage from "./page/create/create";
 import ArticleList from "./page/ArticleList/ArticleList";
+import NpmList from "./page/npmList/npmList";
 
 const { Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 function App() {
   const [collapsed, setCollapsed] = useState(true);
   const onCollapse = () => setCollapsed((collapsed) => !collapsed);
+
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
@@ -31,7 +33,9 @@ function App() {
             <Menu.Item key="2">
               <Link to="/articleList">ArticleList</Link>
             </Menu.Item>
-            <Menu.Item key="3">Bill</Menu.Item>
+            <Menu.Item key="3">
+              <Link to="/npmList">NpmList</Link>
+            </Menu.Item>
           </SubMenu>
         </Menu>
       </Sider>
@@ -44,6 +48,7 @@ function App() {
             <Switch>
               <Route path="/create" exact component={CreatePage} />
               <Route path="/articleList" exact component={ArticleList} />
+              <Route path="/npmList" exact component={NpmList} />
               <Redirect to="/create" />
             </Switch>
           </div>

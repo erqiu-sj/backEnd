@@ -61,6 +61,7 @@ const Screen: FC<Props> = () => {
           </Option>
         ))}
       </Select>
+      &nbsp; &nbsp;
       <Select placeholder="Type" style={{ width: 120 }} loading>
         {frontEnd &&
           backEnd &&

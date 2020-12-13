@@ -23,6 +23,7 @@ const CreatePage: FC<Props> = () => {
   const token = useSelector((state: { AdminToken: Map<string, string> }) =>
     state.AdminToken.get("token")
   );
+
   // 提交文章时
   function Send() {
     ErrorHandling(

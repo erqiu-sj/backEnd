@@ -30,6 +30,7 @@ const GroupSelect: FC<Props> = ({ onProxyChange }) => {
     (state: { GetArticleBackendTypeList: Map<string, string[]> }) =>
       state.GetArticleBackendTypeList.get("list")
   );
+
   const [listData] = useState<GroupDefine[]>([
     { name: "前端", list: frontEndData },
     { name: "后端", list: backendData },
