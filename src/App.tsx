@@ -1,13 +1,16 @@
 /*
  * @Author: 邱狮杰
  * @Date: 2020-12-04 14:47:31
- * @LastEditTime: 2020-12-13 16:53:35
+ * @LastEditTime: 2020-12-19 13:21:27
  * @FilePath: /backEnd-main/src/App.tsx
  * @Description: homePage
  */
 import React, { useState } from "react";
 import { Layout, Menu } from "antd";
-import { DesktopOutlined, OrderedListOutlined } from "@ant-design/icons";
+import {
+  DesktopOutlined,
+  OrderedListOutlined,
+} from "@ant-design/icons";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 // Page
