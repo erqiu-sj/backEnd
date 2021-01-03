@@ -16,3 +16,5 @@ export const ARTICLE_UPLOADFAILED = "文章上传失败";
 // admin
 export const ADMINLOGIN_ERROR = "管理员密码错误";
 export const ADMIN_READONLY = "非管理员没有可写权限";
+// column
+export const COLUMNEXISTS = "该专栏已存在"

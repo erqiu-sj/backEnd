@@ -5,19 +5,15 @@
  * @FilePath: /backEnd-main/src/http/create/create.ts
  * @Description: http
  */
-import Axios, { AxiosRequestConfig } from "axios";
-export interface SendArticle {
-  Title: string;
-  Content: string;
-  ArticleType: string;
-  BriefIntroduction: string;
-}
+import Axios, {AxiosRequestConfig} from "axios";
+
 
 const http = Axios.create({
-  baseURL: "http://localhost:8080/administratorsArticle",
-  timeout: 4000,
-  method: "POST",
+    baseURL: "http://localhost:8080/administratorsArticle",
+    timeout: 4000,
+    method: "POST",
 });
+
 export function Create(config: AxiosRequestConfig) {
-  return http(config);
+    return http(config);
 }

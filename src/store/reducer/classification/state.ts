@@ -1,7 +1,7 @@
 /*
  * @Author: 邱狮杰
  * @Date: 2020-12-04 17:24:10
- * @LastEditTime: 2020-12-13 15:43:06
+ * @LastEditTime: 2021-01-02 15:13:01
  * @FilePath: /backEnd-main/src/store/reducer/classification/state.ts
  * @Description: 分类content
  */
@@ -10,10 +10,16 @@ export const ActicleFrontendTypeList = [
   "JavaScript",
   "TypeScript",
   "Css",
-  "Echart", 
+  "Echart",
 ];
 // 后端
-export const ActicleBackendTypeList = ["Golang", "Mysql", "Redis"];
+export const ActicleBackendTypeList = [
+  "Golang",
+  "Mysql",
+  "Redis",
+  "Docker",
+  "Linux",
+];
 // 文章Year
 export const ArticleYearList = ["2020", "2021"];
 // 文章Mounth
